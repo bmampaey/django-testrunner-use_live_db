@@ -1,7 +1,7 @@
 # Based on http://stackoverflow.com/a/5809952/689985
 
 from django.test.runner import DiscoverRunner
-from django.test.runner import dependency_ordered
+from django.test.utils import dependency_ordered
 
 class ByPassableDBDjangoTestSuiteRunner(DiscoverRunner):
     def setup_databases(self, **kwargs):
@@ -67,4 +67,4 @@ class ByPassableDBDjangoTestSuiteRunner(DiscoverRunner):
             connections[alias].settings_dict['NAME'] = (
                 connections[mirror_alias].settings_dict['NAME'])
 
-        return old_names, mirrors
+        return old_names
